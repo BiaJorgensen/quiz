@@ -11,20 +11,29 @@ let questions = [
 {
     question: "2How do you name a variable?",
     options: ["2let variable = name", "2variableName = name", "2name = Variable", "2var: name"],
-    answer: 0
+    answer: 1
 },
 {
     question: "3How do you name a variable?",
     options: ["3let variable = name", "3variableName = name", "3name = Variable", "3var: name"],
-    answer: 0   
+    answer: 2   
 }
 ]
 
 function showQuestion() {
-    
-    question.textContent = questions[0].question;
+    let i = 0
+    questions[i]
+    question.textContent = questions[i].question;
     option.forEach(function(element, index){
-        element.textContent = questions[0].options[index]
+        element.textContent = questions[i].options[index];
+        element.addEventListener ('click', function(){
+            if(questions[i].answer == index) {
+                evaluate.textContent = "Correct";
+            } 
+            else {
+                evaluate.textContent = "Wrong";
+            }
+        })
 
     })
 
