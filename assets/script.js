@@ -19,7 +19,11 @@ let questions = [
     answer: 2   
 }
 ]
-let i = 0
+let i = 0;
+var result = "";
+evaluate.textContent = result
+console.log(result);
+
 function showQuestion() {
     
     
@@ -29,16 +33,19 @@ function showQuestion() {
         element.textContent = questions[i].options[index];
         element.addEventListener ('click', function(){
             i++;
-            console.log(i);
             showQuestion();
             if(questions[i-1].answer == index) {
-                        evaluate.textContent = "Correct";
+                result = "Correct";
+                
+                evaluate.textContent = result
                         
-                    } 
-                    else {
-                        evaluate.textContent = "Wrong";
+            } 
+            else {
+                result = "Wrong";
+                
+                evaluate.textContent = result
                         
-                    }
+            }
 
 
         })
@@ -66,7 +73,9 @@ function showQuestion() {
 //     showQuestion()  
 // }
 
-  showQuestion()  
+  showQuestion()
+  
+  
 
    
     
