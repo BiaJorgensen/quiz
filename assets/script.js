@@ -19,25 +19,52 @@ let questions = [
     answer: 2   
 }
 ]
-
+let i = 0
 function showQuestion() {
-    let i = 0
+    
+    
     questions[i]
     question.textContent = questions[i].question;
     option.forEach(function(element, index){
         element.textContent = questions[i].options[index];
         element.addEventListener ('click', function(){
-            if(questions[i].answer == index) {
-                evaluate.textContent = "Correct";
-            } 
-            else {
-                evaluate.textContent = "Wrong";
-            }
+            i++;
+            console.log(i);
+            showQuestion();
+            if(questions[i-1].answer == index) {
+                        evaluate.textContent = "Correct";
+                        
+                    } 
+                    else {
+                        evaluate.textContent = "Wrong";
+                        
+                    }
+
+
         })
+
+        // element.addEventListener ('click', function(){
+            
+        //     if(questions[i].answer == index) {
+        //         evaluate.textContent = "Correct";
+                
+        //     } 
+        //     else {
+        //         evaluate.textContent = "Wrong";
+                
+        //     }
+            
+        // })
+        
 
     })
 
 }
+
+// function next(){
+//     i++;
+//     showQuestion()  
+// }
 
   showQuestion()  
 
