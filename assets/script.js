@@ -5,6 +5,9 @@ let optionC = document.querySelector("#C");
 let optionD = document.querySelector("#D");
 let evaluate = document.querySelector("#evaluate");
 
+
+let score = 0;
+
 //Array with questions and their respective options
 let questions = [
 {
@@ -34,18 +37,21 @@ let questions = [
 ];
 
 //Variable to determine index of last available question
-let lastQuestion = questions.lenght -1;
+let lastQuestion = questions.length -1;
+
 
 //Variable to determine which question is currently showing
 let currentQuestion = 0;
+console.log(currentQuestion);
 
 // let i = 0;
-var result = "";
-evaluate.textContent = result
-console.log(result);
+// var result = "";
+// evaluate.textContent = result
+// console.log(result);
 
 //Function to get the question from questions array
 function getQuestionSet() {
+    
     questionTitle.textContent = questions[currentQuestion].title;
     optionA.textContent = questions[currentQuestion].optionA;
     optionB.textContent = questions[currentQuestion].optionB;
@@ -55,11 +61,31 @@ function getQuestionSet() {
 
 getQuestionSet()
 
+//Function to validate if answer is correct
+function validateAnswer(x) {
+    //If answer is correct, increase score by one
+    if( x == questions[currentQuestion].answer) {
+        score++;
+        console.log("right");
+        evaluate.textContent = "Right"
 
-
-function showQuestion() {
-    
+    }
+    //If answer is wrong, decrease score by one
+    else {
+        score--;
+        console.log("wrong");
+        evaluate.textContent = "Wrong"
+    }
+    //If the index representing the current question in the questions array is less than the index of the last question, the function to show the question is called again and it will show the next question
+    if(currentQuestion < lastQuestion){
+        currentQuestion++;
+        getQuestionSet()
+    }
 }
+
+// function showQuestion() {
+    
+// }
 // showQuestion()
 
 
