@@ -1,24 +1,44 @@
 let question = document.querySelector("#question");
-let option = document.querySelectorAll(".option");
+let optionA = document.querySelector("#A");
+let optionB = document.querySelector("#B");
+let optionC = document.querySelector("#C");
+let optionD = document.querySelector("#D");
 let evaluate = document.querySelector("#evaluate");
 
+//Array with questions and their respective options
 let questions = [
 {
     question: "1How do you name a variable?",
-    options: ["1let variable = name", "1variableName = name", "1name = Variable", "1var: name"],
-    answer: 0
+    optionA: "1let variable = name", 
+    optionB: "1variableName = name", 
+    optionC: "1name = Variable", 
+    optionD: "1var: name",
+    answer: "A"
 },
 {
     question: "2How do you name a variable?",
-    options: ["2let variable = name", "2variableName = name", "2name = Variable", "2var: name"],
-    answer: 1
+    optionA: "2let variable = name", 
+    optionB: "2variableName = name", 
+    optionC: "2name = Variable", 
+    optionD: "2var: name",
+    answer: "B"
 },
 {
     question: "3How do you name a variable?",
-    options: ["3let variable = name", "3variableName = name", "3name = Variable", "3var: name"],
-    answer: 2   
+    optionA: "3let variable = name", 
+    optionB: "3variableName = name", 
+    optionC: "3name = Variable", 
+    optionD: "3var: name",
+    answer: "C"  
 }
-]
+];
+
+//Variable to determine index of last available question
+let lastQuestion = questions.lenght -1;
+
+//Variable to determine which question is currently showing
+let currentQuestion = 0;
+
 let i = 0;
 var result = "";
 evaluate.textContent = result
