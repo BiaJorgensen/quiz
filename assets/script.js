@@ -1,4 +1,4 @@
-let question = document.querySelector("#question");
+let questionTitle = document.querySelector("#question");
 let optionA = document.querySelector("#A");
 let optionB = document.querySelector("#B");
 let optionC = document.querySelector("#C");
@@ -8,7 +8,7 @@ let evaluate = document.querySelector("#evaluate");
 //Array with questions and their respective options
 let questions = [
 {
-    question: "1How do you name a variable?",
+    title: "1How do you name a variable?",
     optionA: "1let variable = name", 
     optionB: "1variableName = name", 
     optionC: "1name = Variable", 
@@ -16,7 +16,7 @@ let questions = [
     answer: "A"
 },
 {
-    question: "2How do you name a variable?",
+    title: "2How do you name a variable?",
     optionA: "2let variable = name", 
     optionB: "2variableName = name", 
     optionC: "2name = Variable", 
@@ -24,7 +24,7 @@ let questions = [
     answer: "B"
 },
 {
-    question: "3How do you name a variable?",
+    title: "3How do you name a variable?",
     optionA: "3let variable = name", 
     optionB: "3variableName = name", 
     optionC: "3name = Variable", 
@@ -39,36 +39,59 @@ let lastQuestion = questions.lenght -1;
 //Variable to determine which question is currently showing
 let currentQuestion = 0;
 
-let i = 0;
+// let i = 0;
 var result = "";
 evaluate.textContent = result
 console.log(result);
 
+//Function to get the question from questions array
+function getQuestionSet() {
+    questionTitle.textContent = questions[currentQuestion].title;
+    optionA.textContent = questions[currentQuestion].optionA;
+    optionB.textContent = questions[currentQuestion].optionB;
+    optionC.textContent = questions[currentQuestion].optionC;
+    optionD.textContent = questions[currentQuestion].optionD;
+}
+
+getQuestionSet()
+
+
+
 function showQuestion() {
     
+}
+// showQuestion()
+
+
+
+
+
+
+
+
     
-    questions[i]
-    question.textContent = questions[i].question;
-    option.forEach(function(element, index){
-        element.textContent = questions[i].options[index];
-        element.addEventListener ('click', function(){
-            i++;
-            showQuestion();
-            if(questions[i-1].answer == index) {
-                result = "Correct";
+    // questions[i]
+    // question.textContent = questions[i].question;
+    // option.forEach(function(element, index){
+    //     element.textContent = questions[i].options[index];
+    //     element.addEventListener ('click', function(){
+    //         i++;
+    //         showQuestion();
+    //         if(questions[i-1].answer == index) {
+    //             result = "Correct";
                 
-                evaluate.textContent = result
+    //             evaluate.textContent = result
                         
-            } 
-            else {
-                result = "Wrong";
+    //         } 
+    //         else {
+    //             result = "Wrong";
                 
-                evaluate.textContent = result
+    //             evaluate.textContent = result
                         
-            }
+    //         }
 
 
-        })
+    //     })
 
         // element.addEventListener ('click', function(){
             
@@ -84,16 +107,16 @@ function showQuestion() {
         // })
         
 
-    })
+    // })
 
-}
+
 
 // function next(){
 //     i++;
 //     showQuestion()  
 // }
 
-  showQuestion()
+  
   
   
 
