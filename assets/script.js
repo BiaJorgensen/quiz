@@ -7,6 +7,7 @@ let evaluate = document.querySelector("#evaluate");
 let startBtn = document.querySelector("#start");
 let introDiv = document.querySelector("#intro");
 let questionSetDiv = document.querySelector("#questionSet");
+let timer = document.querySelector("#timer");
 
 
 
@@ -18,6 +19,8 @@ function hideIntro() {
         questionSetDiv.style.display = "block"
     })
 }
+
+
 
 
 let score = 0;
@@ -58,10 +61,7 @@ let lastQuestion = questions.length -1;
 let currentQuestion = 0;
 console.log(currentQuestion);
 
-// let i = 0;
-// var result = "";
-// evaluate.textContent = result
-// console.log(result);
+
 
 //Function to get the question from questions array
 function getQuestionSet() {
@@ -107,91 +107,3 @@ function startQuiz() {
 startQuiz()
 
 
-// function showQuestion() {
-    
-// }
-// showQuestion()
-
-
-
-
-
-
-
-
-    
-    // questions[i]
-    // question.textContent = questions[i].question;
-    // option.forEach(function(element, index){
-    //     element.textContent = questions[i].options[index];
-    //     element.addEventListener ('click', function(){
-    //         i++;
-    //         showQuestion();
-    //         if(questions[i-1].answer == index) {
-    //             result = "Correct";
-                
-    //             evaluate.textContent = result
-                        
-    //         } 
-    //         else {
-    //             result = "Wrong";
-                
-    //             evaluate.textContent = result
-                        
-    //         }
-
-
-    //     })
-
-        // element.addEventListener ('click', function(){
-            
-        //     if(questions[i].answer == index) {
-        //         evaluate.textContent = "Correct";
-                
-        //     } 
-        //     else {
-        //         evaluate.textContent = "Wrong";
-                
-        //     }
-            
-        // })
-        
-
-    // })
-
-
-
-// function next(){
-//     i++;
-//     showQuestion()  
-// }
-
-  
-  
-  
-
-   
-    
-    
-
-
-
-// function getQuestionSet(x) {
-//     question.textContent = x.question;
-//     option.forEach(function(element, index){
-//         element.textContent = x.options [index];
-//         element.addEventListener ('click', function(){
-//             if(x.answer == index) {
-//                 evaluate.textContent = "Correct";
-//             } 
-//             else {
-//                 evaluate.textContent = "Wrong";
-//             }
-//         })
-
-//     })
-    
-    
-// }
-
-// getQuestionSet(questions)
