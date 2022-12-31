@@ -10,6 +10,7 @@ let questionSetDiv = document.querySelector("#questionSet");
 let timer = document.querySelector("#timer");
 let gameOverDiv = document.querySelector("#gameOver");
 let showScore = document.querySelector("#score");
+let submitScoreBtn = document.querySelector("#submitScore");
 
 let score = 0;
 //Array with questions and their respective options
@@ -131,6 +132,25 @@ function finalizeQuiz() {
     showScore.textContent = "Your final score is " + score + ".";
 
 }
+
+//Function to save user's initials and score in local storage
+    submitScoreBtn.addEventListener('click', function() {
+        // event.preventDefault();
+
+        let initials = document.querySelector("#initials").value;
+
+        if (initials === "") {
+            alert("Please enter your initials")
+        }
+        else {
+            localStorage.setItem("initials", initials);
+            localStorage.setItem("score", score);
+            evaluate.style.display = "none";
+            
+        }
+
+    })
+
 
 //Function to start quiz
 function startQuiz() {
