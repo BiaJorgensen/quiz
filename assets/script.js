@@ -11,6 +11,7 @@ let timer = document.querySelector("#timer");
 let gameOverDiv = document.querySelector("#gameOver");
 let showScore = document.querySelector("#score");
 let submitScoreBtn = document.querySelector("#submitScore");
+let highScoresDiv = document.querySelector("#highScores");
 
 let score = 0;
 //Array with questions and their respective options
@@ -134,8 +135,8 @@ function finalizeQuiz() {
 }
 
 //Function to save user's initials and score in local storage
-    submitScoreBtn.addEventListener('click', function() {
-        // event.preventDefault();
+    submitScoreBtn.addEventListener('click', function(event) {
+        event.preventDefault();
 
         let initials = document.querySelector("#initials").value;
 
@@ -146,10 +147,23 @@ function finalizeQuiz() {
             localStorage.setItem("initials", initials);
             localStorage.setItem("score", score);
             evaluate.style.display = "none";
-            
+            addScores()
         }
 
     })
+
+    //Function to add scores to high scores section
+    function addScores() {
+        let initials = localStorage.getItem("initials");
+        
+        let score = localStorage.getItem("score");
+        
+
+        let savedScores = document.createElement("p");
+        savedScores.textContent = "Player " + initials + " - " + score + " point(s)";
+        highScoresDiv.appendChild(savedScores)
+    }
+    
 
 
 //Function to start quiz
