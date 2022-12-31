@@ -4,6 +4,20 @@ let optionB = document.querySelector("#B");
 let optionC = document.querySelector("#C");
 let optionD = document.querySelector("#D");
 let evaluate = document.querySelector("#evaluate");
+let startBtn = document.querySelector("#start");
+let introDiv = document.querySelector("#intro");
+let questionSetDiv = document.querySelector("#questionSet");
+
+
+
+
+//Function to hide intro and show question
+function hideIntro() {
+    startBtn.addEventListener('click', function() {
+        introDiv.style.display = "none";
+        questionSetDiv.style.display = "block"
+    })
+}
 
 
 let score = 0;
@@ -59,7 +73,7 @@ function getQuestionSet() {
     optionD.textContent = questions[currentQuestion].optionD;
 }
 
-getQuestionSet()
+
 
 //Function to validate if answer is correct
 function validateAnswer(x) {
@@ -82,6 +96,16 @@ function validateAnswer(x) {
         getQuestionSet()
     }
 }
+
+//Function to start quiz
+function startQuiz() {
+    hideIntro();
+    getQuestionSet();
+    
+}
+
+startQuiz()
+
 
 // function showQuestion() {
     
