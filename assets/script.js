@@ -21,18 +21,19 @@ function hideIntro() {
     })
 }
 
-
+let secondsLeft = 60;
 //Function to set timer - countdown
 function countdown() {
-    let secondsLeft = 60;
+    
     let interval = setInterval(function() {
         secondsLeft--;
         timer.textContent = "Time " + secondsLeft + " second(s)";
         
-        if(secondsLeft === 0) {
+        if(secondsLeft <= 0) {
             clearInterval(interval);
             //Change below to a function
-            questionSetDiv.style.display = "none" ;
+            questionSetDiv.style.display = "none";
+            timer.style.display = "none";
         }
     }, 1000);
 }
@@ -95,14 +96,12 @@ function validateAnswer(x) {
     //If answer is correct, increase score by one
     if( x == questions[currentQuestion].answer) {
         score++;
-        console.log("right");
         evaluate.textContent = "Right"
 
     }
     //If answer is wrong, decrease score by one
     else {
-        score--;
-        console.log("wrong");
+        secondsLeft = secondsLeft - 10;
         evaluate.textContent = "Wrong"
     }
     //If the index representing the current question in the questions array is less than the index of the last question, the function to show the question is called again and it will show the next question
