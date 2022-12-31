@@ -8,8 +8,8 @@ let startBtn = document.querySelector("#start");
 let introDiv = document.querySelector("#intro");
 let questionSetDiv = document.querySelector("#questionSet");
 let timer = document.querySelector("#timer");
-
-
+let gameOverDiv = document.querySelector("#gameOver");
+let showScore = document.querySelector("#score");
 
 
 //Function to hide intro and show question
@@ -21,7 +21,7 @@ function hideIntro() {
     })
 }
 
-let secondsLeft = 60;
+let secondsLeft = 10;
 //Function to set timer - countdown
 function countdown() {
     
@@ -34,6 +34,7 @@ function countdown() {
             //Change below to a function
             questionSetDiv.style.display = "none";
             timer.style.display = "none";
+            finalizeQuiz()
         }
     }, 1000);
 }
@@ -109,6 +110,14 @@ function validateAnswer(x) {
         currentQuestion++;
         getQuestionSet()
     }
+}
+
+
+//Function to stop quiz and save user's initials and score
+function finalizeQuiz() {
+    gameOverDiv.style.display = "block";
+    showScore.textContent = "Your final score is " + score + ".";
+
 }
 
 //Function to start quiz

@@ -22,7 +22,7 @@
     <section id="intro" style="display: block">
         <h3>Quiz Challenge</h3>
         <p>This challenge is to test your knowledge in JavaScript. You will have 120 seconds to answer up to 15 questions. You can click on "High Scores" to check other's scores. Click "Start" to begin.</p>
-        <button id="start">Start</button>
+        <button id="start">Start Quiz</button>
     </section>
 
 
@@ -35,6 +35,17 @@
             <li class="option" id="D" onclick="validateAnswer('D')"></li>
         </ol>
     </div>
+    
+
+    <section id="gameOver" style="display: none">
+        <p>Game Over!</p>
+        <p id="score">Score</p>
+        <label for="initials">Enter your initials</label>
+        <input type="text" name="initials" id="initials">
+
+
+    </section>
+
     <div id="evaluate"></div>
 
     <script src="./assets/script.js"></script>
