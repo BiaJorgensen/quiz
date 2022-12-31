@@ -17,10 +17,25 @@ function hideIntro() {
     startBtn.addEventListener('click', function() {
         introDiv.style.display = "none";
         questionSetDiv.style.display = "block"
+        countdown()
     })
 }
 
 
+//Function to set timer - countdown
+function countdown() {
+    let secondsLeft = 60;
+    let interval = setInterval(function() {
+        secondsLeft--;
+        timer.textContent = "Time " + secondsLeft + " second(s)";
+        
+        if(secondsLeft === 0) {
+            clearInterval(interval);
+            //Change below to a function
+            questionSetDiv.style.display = "none" ;
+        }
+    }, 1000);
+}
 
 
 let score = 0;
