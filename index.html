@@ -16,13 +16,14 @@
         <h2>High Scores</h2>
     </section>
 
-    <section>
+    <section id="intro" style="display: block">
         <h3>Quiz Challenge</h3>
         <p>This challenge is to test your knowledge in JavaScript. You will have 120 seconds to answer up to 15 questions. You can click on "High Scores" to check other's scores. Click "Start" to begin.</p>
+        <button id="start">Start</button>
     </section>
 
-    <button>Start</button>
-    <div>
+
+    <div id="questionSet" style="display: none">
         <div id="question"></div>
         <ol>
             <li class="option" id="A" onclick="validateAnswer('A')"></li>
