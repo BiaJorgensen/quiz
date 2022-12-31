@@ -11,6 +11,43 @@ let timer = document.querySelector("#timer");
 let gameOverDiv = document.querySelector("#gameOver");
 let showScore = document.querySelector("#score");
 
+let score = 0;
+//Array with questions and their respective options
+let questions = [
+    {
+        title: "1How do you name a variable?",
+        optionA: "1let variable = name", 
+        optionB: "1variableName = name", 
+        optionC: "1name = Variable", 
+        optionD: "1var: name",
+        answer: "A"
+    },
+    {
+        title: "2How do you name a variable?",
+        optionA: "2let variable = name", 
+        optionB: "2variableName = name", 
+        optionC: "2name = Variable", 
+        optionD: "2var: name",
+        answer: "B"
+    },
+    {
+        title: "3How do you name a variable?",
+        optionA: "3let variable = name", 
+        optionB: "3variableName = name", 
+        optionC: "3name = Variable", 
+        optionD: "3var: name",
+        answer: "C"  
+    }
+    ];
+    
+//Variable to determine index of last available question
+let lastQuestion = questions.length -1;
+    
+    
+//Variable to determine which question is currently showing
+let currentQuestion = 0;
+
+let secondsLeft = 60;
 
 //Function to hide intro and show question
 function hideIntro() {
@@ -21,7 +58,9 @@ function hideIntro() {
     })
 }
 
-let secondsLeft = 10;
+//Function to stop game if all questions are answered
+
+
 //Function to set timer - countdown
 function countdown() {
     
@@ -40,43 +79,9 @@ function countdown() {
 }
 
 
-let score = 0;
-
-//Array with questions and their respective options
-let questions = [
-{
-    title: "1How do you name a variable?",
-    optionA: "1let variable = name", 
-    optionB: "1variableName = name", 
-    optionC: "1name = Variable", 
-    optionD: "1var: name",
-    answer: "A"
-},
-{
-    title: "2How do you name a variable?",
-    optionA: "2let variable = name", 
-    optionB: "2variableName = name", 
-    optionC: "2name = Variable", 
-    optionD: "2var: name",
-    answer: "B"
-},
-{
-    title: "3How do you name a variable?",
-    optionA: "3let variable = name", 
-    optionB: "3variableName = name", 
-    optionC: "3name = Variable", 
-    optionD: "3var: name",
-    answer: "C"  
-}
-];
-
-//Variable to determine index of last available question
-let lastQuestion = questions.length -1;
 
 
-//Variable to determine which question is currently showing
-let currentQuestion = 0;
-console.log(currentQuestion);
+
 
 
 
@@ -110,7 +115,12 @@ function validateAnswer(x) {
         currentQuestion++;
         getQuestionSet()
     }
+    else {
+        finalizeQuiz()
+    }
 }
+
+
 
 
 //Function to stop quiz and save user's initials and score
