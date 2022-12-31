@@ -32,8 +32,8 @@ function countdown() {
         if(secondsLeft <= 0) {
             clearInterval(interval);
             //Change below to a function
-            questionSetDiv.style.display = "none";
-            timer.style.display = "none";
+            
+            
             finalizeQuiz()
         }
     }, 1000);
@@ -115,6 +115,8 @@ function validateAnswer(x) {
 
 //Function to stop quiz and save user's initials and score
 function finalizeQuiz() {
+    timer.style.display = "none";
+    questionSetDiv.style.display = "none";
     gameOverDiv.style.display = "block";
     showScore.textContent = "Your final score is " + score + ".";
 
