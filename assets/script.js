@@ -133,10 +133,13 @@ function finalizeQuiz() {
     showScore.textContent = "Your final score is " + score + ".";
 
 }
+let allUsersandScores = [];
+let allUsers = [];
+let allScores = [];
 
 //Function to save user's initials and score in local storage
-    submitScoreBtn.addEventListener('click', function(event) {
-        event.preventDefault();
+    submitScoreBtn.addEventListener('click', function() {
+        
 
         let initials = document.querySelector("#initials").value;
 
@@ -144,25 +147,31 @@ function finalizeQuiz() {
             alert("Please enter your initials")
         }
         else {
-            localStorage.setItem("initials", initials);
-            localStorage.setItem("score", score);
+            
+
+            allUsers.push(initials);
+            console.log(allUsers);
+
+            allScores.push(score);
+
+            for (let i = 0; i < allUsers.length; i++) {
+            let savedScores = document.createElement("p");
+            savedScores.textContent = (i +1) + " Player " + allUsers[i] + " - " + allScores[i] + " point(s)";
+            highScoresDiv.appendChild(savedScores)
+            }
+
+            
+           
             evaluate.style.display = "none";
-            addScores()
+            gameOverDiv.style.display = "none";
+            highScoresDiv.style.display = "block";
+
+            
         }
 
     })
 
-    //Function to add scores to high scores section
-    function addScores() {
-        let initials = localStorage.getItem("initials");
-        
-        let score = localStorage.getItem("score");
-        
-
-        let savedScores = document.createElement("p");
-        savedScores.textContent = "Player " + initials + " - " + score + " point(s)";
-        highScoresDiv.appendChild(savedScores)
-    }
+   
     
 
 
