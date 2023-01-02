@@ -1,5 +1,6 @@
 :root {
-    --purple: blueviolet;
+    --main-color: blueviolet;
+    --hover-color: rgb(224, 11, 189);
 }
 
 * {
@@ -12,11 +13,11 @@ h1 {
     text-align: center;
     font-size: 30px;
     font-weight: bolder;
-    color: var(--purple);
+    color: var(--main-color);
 }
 
 .hs {
-    color: var(--purple);
+    color: var(--main-color);
     display: flex;
     justify-content: space-between;
 }
@@ -27,16 +28,16 @@ h1 {
 }
 
 button, .option, #highScores p {
-    background-color: var(--purple);
+    background-color: var(--main-color);
     color: white;
     border-radius: 10px;
-    border-color: var(--purple);
+    border-color: var(--main-color);
     
 }
 
 button:hover, .option:hover {
-    background-color: rgb(224, 11, 189);
-    border-color:rgb(224, 11, 189) ;
+    background-color: var(--hover-color);
+    border-color: var(--hover-color);
 }
 
 .option {
@@ -48,11 +49,8 @@ button:hover, .option:hover {
     background-color: rgb(212, 176, 245);
     color: white;
     border-radius: 10px;
-    padding: 5px;
-    
+    padding: 5px; 
 }
-
-
 
 #intro {
     text-align: center;
@@ -69,4 +67,20 @@ h3 {
     color: gray;
     border-top: gray solid 1px;
     margin-top: 30px;
+}
+
+
+@media screen and (max-width: 500px) {
+    .hs {
+        display: block;
+        text-align: center;
+    }
+   
+    input {
+        width: 80%;
+    }
+   
+    #highScoresPage button {
+        margin-bottom: 20px;
+    }
 }
