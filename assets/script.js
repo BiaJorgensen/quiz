@@ -156,13 +156,13 @@ function finalizeQuiz() {
     showScore.textContent = "Your final score is " + score + ".";
 
 }
-        let allUsers = JSON.parse(localStorage.getItem("users")) ||[];
-        let allScores = JSON.parse(localStorage.getItem("scores")) || [];
+        
         let savedScores;
 
 //Function to save user's initials and score in local storage
     submitScoreBtn.addEventListener('click', function() {
-        
+        let allUsers = JSON.parse(localStorage.getItem("users")) ||[];
+        let allScores = JSON.parse(localStorage.getItem("scores")) || [];
 
         let initials = document.querySelector("#initials").value;
 
@@ -208,13 +208,12 @@ function finalizeQuiz() {
     };
 
    //Function to clear high scores
-//    function clearHs() {
-//     while (highScoresDiv.firstChild) {
-//         highScoresDiv.removeChild(highScoresDiv.firstChild);
-//     }
-//     allUsers = [];
-//     allScores = [];
-//    }
+   function clearHs() {
+    while (highScoresDiv.firstChild) {
+        highScoresDiv.removeChild(highScoresDiv.firstChild);
+    }
+    localStorage.clear();
+   }
     
 
 
