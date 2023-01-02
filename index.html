@@ -26,7 +26,7 @@
     </section>
 
 
-    <div class="divs" id="questionSet" style="display: block">
+    <div class="divs" id="questionSet" style="display: none">
         <h3 id="question"></h3>
         
             <p class="option" id="A" onclick="validateAnswer('A')"></p>
@@ -37,7 +37,7 @@
     </div>
     
 
-    <section class="divs" id="gameOver" style="display: block">
+    <section class="divs" id="gameOver" style="display: none">
         <h3>Game Over!</h3>
         <p id="score"></p>
         <label for="initials">Enter your initials</label>
@@ -45,9 +45,9 @@
         <button id="submitScore">Submit</button>
     </section>
 
-    <div class="divs" id="evaluate" style="display: block;"></div>
+    <div class="divs" id="evaluate" style="display: none;"></div>
 
-    <section class="divs" id="highScoresPage" style="display: block">
+    <section class="divs" id="highScoresPage" style="display: none">
     <div id="highScores" ></div>
         <button onclick="goToMain()">Main Page</button>
         <button onclick="clearHs()">Clear High Scores</button>
