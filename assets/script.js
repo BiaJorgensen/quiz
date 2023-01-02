@@ -57,13 +57,16 @@ function countdown() {
     interval = setInterval(function() {
         secondsLeft--;
         timer.textContent = "Time " + secondsLeft + " second(s)";
-        if(secondsLeft <= 0) {
-            stopTimer();  
-            finalizeQuiz()
-        }
+        // if(secondsLeft <= 0) {
+        //     stopTimer();  
+        //     finalizeQuiz()
+        // }
     }, 1000);
     
 }
+countdown()
+
+
 
 //Function to stop timer
 function stopTimer() {

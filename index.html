@@ -12,42 +12,42 @@
         <h1>JavaScript Quiz</h1>
     </header>
 
-    <section>
-        <h2>High Scores</h2>
+    <section class="hs">
+        <h2 id="highScoreLink">High Scores</h2>
         <h2 id="timer"></h2>
     </section>
 
     
 
-    <section id="intro" style="display: block">
-        <h3>Quiz Challenge</h3>
+    <section class="divs" id="intro" style="display: block">
+        <h3>Coding Quiz Challenge</h3>
         <p>This challenge is to test your knowledge in JavaScript. You will have 120 seconds to answer up to 15 questions. You can click on "High Scores" to check other players' scores. Click "Start Quiz" to begin.</p>
         <button id="start" onclick="startQuiz()">Start Quiz</button>
     </section>
 
 
-    <div id="questionSet" style="display: none">
-        <div id="question"></div>
-        <ol>
-            <li class="option" id="A" onclick="validateAnswer('A')"></li>
-            <li class="option" id="B" onclick="validateAnswer('B')"></li>
-            <li class="option" id="C" onclick="validateAnswer('C')"></li>
-            <li class="option" id="D" onclick="validateAnswer('D')"></li>
-        </ol>
+    <div class="divs" id="questionSet" style="display: block">
+        <h3 id="question"></h3>
+        
+            <p class="option" id="A" onclick="validateAnswer('A')"></p>
+            <p class="option" id="B" onclick="validateAnswer('B')"></p>
+            <p class="option" id="C" onclick="validateAnswer('C')"></p>
+            <p class="option" id="D" onclick="validateAnswer('D')"></p>
+        
     </div>
     
 
-    <section id="gameOver" style="display: none">
-        <p>Game Over!</p>
+    <section class="divs" id="gameOver" style="display: block">
+        <h3>Game Over!</h3>
         <p id="score"></p>
         <label for="initials">Enter your initials</label>
         <input type="text" name="initials" id="initials">
         <button id="submitScore">Submit</button>
     </section>
 
-    <div id="evaluate" style="display: none;"></div>
+    <div class="divs" id="evaluate" style="display: block;"></div>
 
-    <section id="highScoresPage" style="display: none">
+    <section class="divs" id="highScoresPage" style="display: block">
     <div id="highScores" ></div>
         <button onclick="goToMain()">Main Page</button>
         <button onclick="clearHs()">Clear High Scores</button>
