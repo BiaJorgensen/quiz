@@ -45,14 +45,23 @@ let secondsLeft = 10;
 let score = 0;
 let interval;
 
+//Function to hide section
+function hide(y) {
+    y.style.display = "none";          
+}
+
+//Function to show section
+function show(z) {
+    z.style.display = "block";
+}
+
 //Function to start quiz when "Start Quiz" button is clicked
 function startQuiz() {
     hide(introDiv);
     show(questionSetDiv);
     getQuestionSet();
     countdown();
-    timer.textContent = "Time " + secondsLeft + " second(s)";
-      
+    timer.textContent = "Time " + secondsLeft + " second(s)";    
 }
 
 //Function to set/start timer - countdown
@@ -65,12 +74,8 @@ function countdown() {
             stopTimer();  
             finalizeQuiz()
         }
-    }, 1000);
-    
+    }, 1000);  
 }
-
-
-
 
 //Function to stop timer
 function stopTimer() {
@@ -127,7 +132,6 @@ function finalizeQuiz() {
     showScore.textContent = "Your final score is " + score + ".";
 }
 
-
 //Function to save user's initials and score in local storage
 submitScoreBtn.addEventListener('click', function() {
     let initials = document.querySelector("#initials").value;
@@ -144,7 +148,7 @@ submitScoreBtn.addEventListener('click', function() {
         show(highScoresPage);
         renderHighScores();
     }
-});
+})
 
 //Function to render high scores
 function renderHighScores() {
@@ -165,50 +169,9 @@ function renderHighScores() {
      }  
 }
 
-//Function to go back to main page
-function goToMain() {
-    reset();
-    show(introDiv);
-    show(hsLink);
-    hide(highScoresPage);
-    //Clears previous entered initial from initial's text box
-    initials.value = "";
-};
-
-//Function to clear high scores from high scores page and local storage
-function clearHs() {
-    removeChild()
-    localStorage.clear();
-};
-    
-//Function to reset variables for a new game
-function reset() {
-    score = 0;
-    currentQuestion = 0;
-    secondsLeft = 10;
-    //Removes child elements created on high scores page to avoid duplicates
-    removeChild()
-};
-
-//Function to remove child elements created on high scores page
-function removeChild() {
-    while (highScoresDiv.firstChild) {
-        highScoresDiv.removeChild(highScoresDiv.firstChild);
-    }
-};
-
-//Function to hide section
-function hide(y) {
-    y.style.display = "none";          
-}
-
-//Function to show section
-function show(z) {
-    z.style.display = "block";
-}
-
 //Function to show high scores when high score on top left of page is clicked
 hsLink.addEventListener('click', function() {
+    //Hiding every page that user could be on, timer and high score link; only shows high scores page
     show(highScoresPage);
     hide(introDiv);
     hide(hsLink);
@@ -217,13 +180,45 @@ hsLink.addEventListener('click', function() {
     hide(evaluate);
     hide(timer);
     stopTimer();
+    //Gets users and scored from local storage, if any
     let allUsers = JSON.parse(localStorage.getItem("users")) || [];
     let allScores = JSON.parse(localStorage.getItem("scores")) || [];
 //Creates p elements for each user/score
-for (let i = 0; i < allUsers.length; i++) {
-    let savedScores = document.createElement("p");
-    savedScores.textContent = (i +1) + " " + allUsers[i] + " - " + allScores[i] + " point(s)";
-    highScoresDiv.appendChild(savedScores)
-}  
-
+    for (let i = 0; i < allUsers.length; i++) {
+        let savedScores = document.createElement("p");
+        savedScores.textContent = (i +1) + " " + allUsers[i] + " - " + allScores[i] + " point(s)";
+        highScoresDiv.appendChild(savedScores)
+    }  
 })
+
+//Function to go back to main page when 'Main Page' button is clicked
+function goToMain() {
+    reset();
+    show(introDiv);
+    show(hsLink);
+    hide(highScoresPage);
+    //Clears previous entered initial from initial's text box
+    initials.value = "";
+}
+
+//Function to clear high scores from high scores page and local storage when 'Clear High Scores' button is clicked
+function clearHs() {
+    removeChild()
+    localStorage.clear();
+}
+    
+//Function to reset variables for a new game
+function reset() {
+    score = 0;
+    currentQuestion = 0;
+    secondsLeft = 10;
+    //Removes child elements created on high scores page to avoid duplicates
+    removeChild()
+}
+
+//Function to remove child elements created on high scores page
+function removeChild() {
+    while (highScoresDiv.firstChild) {
+        highScoresDiv.removeChild(highScoresDiv.firstChild);
+    }
+}
