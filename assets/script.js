@@ -161,40 +161,31 @@ function finalizeQuiz() {
         
 
 //Function to save user's initials and score in local storage
-    submitScoreBtn.addEventListener('click', function() {
-        let savedScores;
-        let allUsers = JSON.parse(localStorage.getItem("users")) ||[];
-        let allScores = JSON.parse(localStorage.getItem("scores")) || [];
-        let initials = document.querySelector("#initials").value;
+submitScoreBtn.addEventListener('click', function() {
+    let allUsers = JSON.parse(localStorage.getItem("users")) || [];
+    let allScores = JSON.parse(localStorage.getItem("scores")) || [];
+    let initials = document.querySelector("#initials").value;
 
-        if (initials === "") {
-            alert("Please enter your initials")
-        }
-        else {
-            
+    if (initials === "") {
+        alert("Please enter your initials")
+    }
+    else {
+        allUsers.push(initials);
+        allScores.push(score);
+        localStorage.setItem("users", JSON.stringify(allUsers));
+        localStorage.setItem("scores", JSON.stringify(allScores));
 
-            allUsers.push(initials);
-            console.log(allUsers);
-            allScores.push(score);
-            console.log(allScores);
-
-            // allScores = localStorage.getItem("scores");
-            
-            
-
-            for (let i = 0; i < allUsers.length; i++) {
-            savedScores = document.createElement("p");
+        //Creates p elements for each user/score
+        for (let i = 0; i < allUsers.length; i++) {
+            let savedScores = document.createElement("p");
             savedScores.textContent = (i +1) + " Player " + allUsers[i] + " - " + allScores[i] + " point(s)";
             highScoresDiv.appendChild(savedScores)
-            }
+        }
 
-            localStorage.setItem("users", JSON.stringify(allUsers));
-            localStorage.setItem("scores", JSON.stringify(allScores));
+            hide(evaluate);
+            hide(gameOverDiv);
+            show(highScoresPage)
            
-            evaluate.style.display = "none";
-            gameOverDiv.style.display = "none";
-            highScoresPage.style.display = "block";
-
             
         }
         
@@ -229,5 +220,13 @@ function removeChild() {
     }
 };
 
+//Function to hide section
+function hide(y) {
+    y.style.display = "none";          
+}
 
+//Function to show section
+function show(z) {
+    z.style.display = "block";
+}
 
