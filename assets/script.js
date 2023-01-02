@@ -1,6 +1,4 @@
-
-
-
+//Global variables used to access HTML
 let evaluate = document.querySelector("#evaluate");
 let introDiv = document.querySelector("#intro");
 let questionSetDiv = document.querySelector("#questionSet");
@@ -10,7 +8,7 @@ let submitScoreBtn = document.querySelector("#submitScore");
 let highScoresDiv = document.querySelector("#highScores");
 let highScoresPage = document.querySelector("#highScoresPage");
 
-let score = 0;
+
 //Array with questions and their respective options
 let questions = [
     {
@@ -47,6 +45,8 @@ let lastQuestion = questions.length -1;
 let currentQuestion = 0;
 
 let secondsLeft = 10;
+let score = 0;
+let interval;
 
 
 //Function to start quiz
@@ -69,7 +69,7 @@ function hideIntro() {
 
 //Function to stop game if all questions are answered
 
-let interval;
+
 
 //Function to stop timer
 function stopTimer() {
@@ -158,13 +158,13 @@ function finalizeQuiz() {
 
 }
         
-        let savedScores;
+        
 
 //Function to save user's initials and score in local storage
     submitScoreBtn.addEventListener('click', function() {
+        let savedScores;
         let allUsers = JSON.parse(localStorage.getItem("users")) ||[];
         let allScores = JSON.parse(localStorage.getItem("scores")) || [];
-
         let initials = document.querySelector("#initials").value;
 
         if (initials === "") {
@@ -201,37 +201,33 @@ function finalizeQuiz() {
     });
 
 //Function to go back to main page; it resets all variables to initial values
-    function goToMain() {
-        reset()
-        introDiv.style.display = "block";
-        highScoresPage.style.display = "none";
-        initials.value = "";
+function goToMain() {
+    reset()
+    introDiv.style.display = "block";
+    highScoresPage.style.display = "none";
+    initials.value = "";
+};
 
-    };
-
-   //Function to clear high scores
-   function clearHs() {
-    while (highScoresDiv.firstChild) {
-        highScoresDiv.removeChild(highScoresDiv.firstChild);
-    }
+//Function to clear high scores
+function clearHs() {
+    removeChild()
     localStorage.clear();
-   }
+};
     
-
-
-
-
 //Function to reset variables for a new game
 function reset() {
     score = 0;
     currentQuestion = 0;
-    console.log(currentQuestion);
     secondsLeft = 10;
+    removeChild()
+};
+
+//Function to remove child elements created on high scores page
+function removeChild() {
     while (highScoresDiv.firstChild) {
         highScoresDiv.removeChild(highScoresDiv.firstChild);
     }
-}
-
+};
 
 
 
