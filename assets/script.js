@@ -49,12 +49,15 @@ let interval;
 function startQuiz() {
     hide(introDiv);
     show(questionSetDiv);
+    getQuestionSet();
     countdown();
-    getQuestionSet();  
+    timer.textContent = "Time " + secondsLeft + " second(s)";
+      
 }
 
 //Function to set/start timer - countdown
 function countdown() {
+    show(timer);
     interval = setInterval(function() {
         secondsLeft--;
         timer.textContent = "Time " + secondsLeft + " second(s)";
@@ -72,6 +75,7 @@ function countdown() {
 //Function to stop timer
 function stopTimer() {
     clearInterval(interval);
+    hide(timer);
 }
 
 //Function to get the question from questions array
@@ -116,7 +120,7 @@ function validateAnswer(x) {
 
 //Function to stop quiz and save user's initials and score
 function finalizeQuiz() {
-    // hide(timer);
+    hide(timer);
     hide(questionSetDiv);
     show(gameOverDiv);
     let showScore = document.querySelector("#score");
@@ -127,15 +131,14 @@ function finalizeQuiz() {
 //Function to save user's initials and score in local storage
 submitScoreBtn.addEventListener('click', function() {
     let initials = document.querySelector("#initials").value;
-    
-
     //If user tries to submit without adding their initials, shows alert, does not save score without initials
     if (initials === "") {
         alert("Please enter your initials")
     }
     //If initals are provided, code can continue
     else {
-        //Hides unnecessary sections and shows high score page
+        //Hides unnecessary sections, shows high score page and renders high scores including new score
+        hide(hsLink);
         hide(evaluate);
         hide(gameOverDiv);
         show(highScoresPage);
@@ -209,6 +212,11 @@ hsLink.addEventListener('click', function() {
     show(highScoresPage);
     hide(introDiv);
     hide(hsLink);
+    hide(questionSetDiv);
+    hide(gameOverDiv);
+    hide(evaluate);
+    hide(timer);
+    stopTimer();
     let allUsers = JSON.parse(localStorage.getItem("users")) || [];
     let allScores = JSON.parse(localStorage.getItem("scores")) || [];
 //Creates p elements for each user/score
