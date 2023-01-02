@@ -1,15 +1,11 @@
-let questionTitle = document.querySelector("#question");
-let optionA = document.querySelector("#A");
-let optionB = document.querySelector("#B");
-let optionC = document.querySelector("#C");
-let optionD = document.querySelector("#D");
+
+
+
 let evaluate = document.querySelector("#evaluate");
-// let startBtn = document.querySelector("#start");
 let introDiv = document.querySelector("#intro");
 let questionSetDiv = document.querySelector("#questionSet");
 let timer = document.querySelector("#timer");
 let gameOverDiv = document.querySelector("#gameOver");
-let showScore = document.querySelector("#score");
 let submitScoreBtn = document.querySelector("#submitScore");
 let highScoresDiv = document.querySelector("#highScores");
 let highScoresPage = document.querySelector("#highScoresPage");
@@ -107,6 +103,11 @@ function countdown() {
 
 //Function to get the question from questions array
 function getQuestionSet() {
+    let questionTitle = document.querySelector("#question");
+    let optionA = document.querySelector("#A");
+    let optionB = document.querySelector("#B");
+    let optionC = document.querySelector("#C");
+    let optionD = document.querySelector("#D");
     
     questionTitle.textContent = questions[currentQuestion].title;
     console.log(questionTitle);
@@ -149,7 +150,7 @@ function validateAnswer(x) {
 
 //Function to stop quiz and save user's initials and score
 function finalizeQuiz() {
-    
+    let showScore = document.querySelector("#score");
     // timer.style.display = "none";
     questionSetDiv.style.display = "none";
     gameOverDiv.style.display = "block";
