@@ -12,6 +12,7 @@ let gameOverDiv = document.querySelector("#gameOver");
 let showScore = document.querySelector("#score");
 let submitScoreBtn = document.querySelector("#submitScore");
 let highScoresDiv = document.querySelector("#highScores");
+let highScoresPage = document.querySelector("#highScoresPage");
 
 let score = 0;
 //Array with questions and their respective options
@@ -78,6 +79,7 @@ let interval;
 function stopTimer() {
     clearInterval(interval);
 }
+
 //Function to set timer - countdown
 function countdown() {
     
@@ -118,6 +120,7 @@ function getQuestionSet() {
 
 //Function to validate if answer is correct
 function validateAnswer(x) {
+    evaluate.style.display = "block";
     //If answer is correct, increase score by one
     if( x == questions[currentQuestion].answer) {
         score++;
@@ -153,10 +156,10 @@ function finalizeQuiz() {
     showScore.textContent = "Your final score is " + score + ".";
 
 }
-let allUsersandScores = [];
+
 let allUsers = [];
 let allScores = [];
-
+let savedScores;
 //Function to save user's initials and score in local storage
     submitScoreBtn.addEventListener('click', function() {
         
@@ -170,13 +173,13 @@ let allScores = [];
             
 
             allUsers.push(initials);
-           
+           console.log(allUsers);
            
 
             allScores.push(score);
 
             for (let i = 0; i < allUsers.length; i++) {
-            let savedScores = document.createElement("p");
+            savedScores = document.createElement("p");
             savedScores.textContent = (i +1) + " Player " + allUsers[i] + " - " + allScores[i] + " point(s)";
             highScoresDiv.appendChild(savedScores)
             }
@@ -185,7 +188,7 @@ let allScores = [];
            
             evaluate.style.display = "none";
             gameOverDiv.style.display = "none";
-            highScoresDiv.style.display = "block";
+            highScoresPage.style.display = "block";
 
             
         }
@@ -196,11 +199,18 @@ let allScores = [];
     function goToMain() {
         reset()
         introDiv.style.display = "block";
-        highScoresDiv.style.display = "none";
+        highScoresPage.style.display = "none";
 
     };
 
-   
+   //Function to clear high scores
+   function clearHs() {
+    while (highScoresDiv.firstChild) {
+        highScoresDiv.removeChild(highScoresDiv.firstChild);
+    }
+    allUsers = [];
+    allScores = [];
+   }
     
 
 
@@ -212,7 +222,9 @@ function reset() {
     currentQuestion = 0;
     console.log(currentQuestion);
     secondsLeft = 10;
-    // highScoresDiv.removeChild(savedScores)
+    while (highScoresDiv.firstChild) {
+        highScoresDiv.removeChild(highScoresDiv.firstChild);
+    }
 }
 
 
