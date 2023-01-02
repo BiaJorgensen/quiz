@@ -4,7 +4,7 @@ let optionB = document.querySelector("#B");
 let optionC = document.querySelector("#C");
 let optionD = document.querySelector("#D");
 let evaluate = document.querySelector("#evaluate");
-let startBtn = document.querySelector("#start");
+// let startBtn = document.querySelector("#start");
 let introDiv = document.querySelector("#intro");
 let questionSetDiv = document.querySelector("#questionSet");
 let timer = document.querySelector("#timer");
@@ -49,35 +49,51 @@ let lastQuestion = questions.length -1;
 //Variable to determine which question is currently showing
 let currentQuestion = 0;
 
-let secondsLeft = 60;
+let secondsLeft = 10;
+
+
+//Function to start quiz
+function startQuiz() {
+
+    hideIntro();
+    getQuestionSet();
+    
+}
 
 //Function to hide intro and show question
 function hideIntro() {
-    startBtn.addEventListener('click', function() {
+    
+        
         introDiv.style.display = "none";
         questionSetDiv.style.display = "block"
         countdown()
-    })
+    
 }
 
 //Function to stop game if all questions are answered
 
+let interval;
 
+//Function to stop timer
+function stopTimer() {
+    clearInterval(interval);
+}
 //Function to set timer - countdown
 function countdown() {
     
-    let interval = setInterval(function() {
+    interval = setInterval(function() {
         secondsLeft--;
         timer.textContent = "Time " + secondsLeft + " second(s)";
         
         if(secondsLeft <= 0) {
-            clearInterval(interval);
-            //Change below to a function
+            
+            stopTimer()
             
             
             finalizeQuiz()
         }
     }, 1000);
+    
 }
 
 
@@ -91,6 +107,7 @@ function countdown() {
 function getQuestionSet() {
     
     questionTitle.textContent = questions[currentQuestion].title;
+    console.log(questionTitle);
     optionA.textContent = questions[currentQuestion].optionA;
     optionB.textContent = questions[currentQuestion].optionB;
     optionC.textContent = questions[currentQuestion].optionC;
@@ -117,7 +134,9 @@ function validateAnswer(x) {
         currentQuestion++;
         getQuestionSet()
     }
+    //If there are no more questions and there is still time, it stops the timer and shows game over section
     else {
+        stopTimer()
         finalizeQuiz()
     }
 }
@@ -127,7 +146,8 @@ function validateAnswer(x) {
 
 //Function to stop quiz and save user's initials and score
 function finalizeQuiz() {
-    timer.style.display = "none";
+    
+    // timer.style.display = "none";
     questionSetDiv.style.display = "none";
     gameOverDiv.style.display = "block";
     showScore.textContent = "Your final score is " + score + ".";
@@ -150,7 +170,8 @@ let allScores = [];
             
 
             allUsers.push(initials);
-            console.log(allUsers);
+           
+           
 
             allScores.push(score);
 
@@ -168,20 +189,32 @@ let allScores = [];
 
             
         }
+        
+    });
 
-    })
+//Function to go back to main page; it resets all variables to initial values
+    function goToMain() {
+        reset()
+        introDiv.style.display = "block";
+        highScoresDiv.style.display = "none";
+
+    };
 
    
     
 
 
-//Function to start quiz
-function startQuiz() {
-    hideIntro();
-    getQuestionSet();
-    
+
+
+//Function to reset variables for a new game
+function reset() {
+    score = 0;
+    currentQuestion = 0;
+    console.log(currentQuestion);
+    secondsLeft = 10;
+    // highScoresDiv.removeChild(savedScores)
 }
 
-startQuiz()
+
 
 
