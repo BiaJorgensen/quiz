@@ -7,6 +7,7 @@ let gameOverDiv = document.querySelector("#gameOver");
 let submitScoreBtn = document.querySelector("#submitScore");
 let highScoresDiv = document.querySelector("#highScores");
 let highScoresPage = document.querySelector("#highScoresPage");
+let hsLink = document.querySelector("#highScoreLink");
 
 //Global variable containing array with questions and their respective options
 let questions = [
@@ -138,7 +139,7 @@ submitScoreBtn.addEventListener('click', function() {
         hide(evaluate);
         hide(gameOverDiv);
         show(highScoresPage);
-        renderHighScores()
+        renderHighScores();
     }
 });
 
@@ -165,6 +166,7 @@ function renderHighScores() {
 function goToMain() {
     reset();
     show(introDiv);
+    show(hsLink);
     hide(highScoresPage);
     //Clears previous entered initial from initial's text box
     initials.value = "";
@@ -202,3 +204,18 @@ function show(z) {
     z.style.display = "block";
 }
 
+//Function to show high scores when high score on top left of page is clicked
+hsLink.addEventListener('click', function() {
+    show(highScoresPage);
+    hide(introDiv);
+    hide(hsLink);
+    let allUsers = JSON.parse(localStorage.getItem("users")) || [];
+    let allScores = JSON.parse(localStorage.getItem("scores")) || [];
+//Creates p elements for each user/score
+for (let i = 0; i < allUsers.length; i++) {
+    let savedScores = document.createElement("p");
+    savedScores.textContent = (i +1) + " Player " + allUsers[i] + " - " + allScores[i] + " point(s)";
+    highScoresDiv.appendChild(savedScores)
+}  
+
+})
