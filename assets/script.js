@@ -156,10 +156,10 @@ function finalizeQuiz() {
     showScore.textContent = "Your final score is " + score + ".";
 
 }
+        let allUsers = JSON.parse(localStorage.getItem("users")) ||[];
+        let allScores = JSON.parse(localStorage.getItem("scores")) || [];
+        let savedScores;
 
-let allUsers = [];
-let allScores = [];
-let savedScores;
 //Function to save user's initials and score in local storage
     submitScoreBtn.addEventListener('click', function() {
         
@@ -173,10 +173,13 @@ let savedScores;
             
 
             allUsers.push(initials);
-           console.log(allUsers);
-           
-
+            console.log(allUsers);
             allScores.push(score);
+            console.log(allScores);
+
+            // allScores = localStorage.getItem("scores");
+            
+            
 
             for (let i = 0; i < allUsers.length; i++) {
             savedScores = document.createElement("p");
@@ -184,7 +187,8 @@ let savedScores;
             highScoresDiv.appendChild(savedScores)
             }
 
-            
+            localStorage.setItem("users", JSON.stringify(allUsers));
+            localStorage.setItem("scores", JSON.stringify(allScores));
            
             evaluate.style.display = "none";
             gameOverDiv.style.display = "none";
@@ -204,13 +208,13 @@ let savedScores;
     };
 
    //Function to clear high scores
-   function clearHs() {
-    while (highScoresDiv.firstChild) {
-        highScoresDiv.removeChild(highScoresDiv.firstChild);
-    }
-    allUsers = [];
-    allScores = [];
-   }
+//    function clearHs() {
+//     while (highScoresDiv.firstChild) {
+//         highScoresDiv.removeChild(highScoresDiv.firstChild);
+//     }
+//     allUsers = [];
+//     allScores = [];
+//    }
     
 
 
