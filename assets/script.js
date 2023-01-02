@@ -204,6 +204,7 @@ function finalizeQuiz() {
         reset()
         introDiv.style.display = "block";
         highScoresPage.style.display = "none";
+        initials.value = "";
 
     };
 
