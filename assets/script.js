@@ -8,8 +8,7 @@ let submitScoreBtn = document.querySelector("#submitScore");
 let highScoresDiv = document.querySelector("#highScores");
 let highScoresPage = document.querySelector("#highScoresPage");
 
-
-//Array with questions and their respective options
+//Global variable containing array with questions and their respective options
 let questions = [
     {
         title: "1How do you name a variable?",
@@ -38,68 +37,38 @@ let questions = [
     ];
     
 //Variable to determine index of last available question
-let lastQuestion = questions.length -1;
-    
-    
-//Variable to determine which question is currently showing
+let lastQuestion = questions.length -1;   
+//Variable to determine which question is currently showing -- index
 let currentQuestion = 0;
-
 let secondsLeft = 10;
 let score = 0;
 let interval;
 
-
-//Function to start quiz
+//Function to start quiz when "Start Quiz" button is clicked
 function startQuiz() {
-
-    hideIntro();
-    getQuestionSet();
-    
+    hide(introDiv);
+    show(questionSetDiv);
+    countdown();
+    getQuestionSet();  
 }
 
-//Function to hide intro and show question
-function hideIntro() {
-    
-        
-        introDiv.style.display = "none";
-        questionSetDiv.style.display = "block"
-        countdown()
-    
-}
-
-//Function to stop game if all questions are answered
-
-
-
-//Function to stop timer
-function stopTimer() {
-    clearInterval(interval);
-}
-
-//Function to set timer - countdown
+//Function to set/start timer - countdown
 function countdown() {
-    
     interval = setInterval(function() {
         secondsLeft--;
         timer.textContent = "Time " + secondsLeft + " second(s)";
-        
         if(secondsLeft <= 0) {
-            
-            stopTimer()
-            
-            
+            stopTimer();  
             finalizeQuiz()
         }
     }, 1000);
     
 }
 
-
-
-
-
-
-
+//Function to stop timer
+function stopTimer() {
+    clearInterval(interval);
+}
 
 //Function to get the question from questions array
 function getQuestionSet() {
@@ -110,28 +79,24 @@ function getQuestionSet() {
     let optionD = document.querySelector("#D");
     
     questionTitle.textContent = questions[currentQuestion].title;
-    console.log(questionTitle);
     optionA.textContent = questions[currentQuestion].optionA;
     optionB.textContent = questions[currentQuestion].optionB;
     optionC.textContent = questions[currentQuestion].optionC;
     optionD.textContent = questions[currentQuestion].optionD;
 }
 
-
-
 //Function to validate if answer is correct
 function validateAnswer(x) {
-    evaluate.style.display = "block";
+    show(evaluate);
     //If answer is correct, increase score by one
     if( x == questions[currentQuestion].answer) {
         score++;
-        evaluate.textContent = "Right"
-
+        evaluate.textContent = "Correct!"
     }
-    //If answer is wrong, decrease score by one
+    //If answer is wrong, decrease timer
     else {
         secondsLeft = secondsLeft - 10;
-        evaluate.textContent = "Wrong"
+        evaluate.textContent = "Wrong!"
     }
     //If the index representing the current question in the questions array is less than the index of the last question, the function to show the question is called again and it will show the next question
     if(currentQuestion < lastQuestion){
@@ -145,20 +110,14 @@ function validateAnswer(x) {
     }
 }
 
-
-
-
 //Function to stop quiz and save user's initials and score
 function finalizeQuiz() {
+    // hide(timer);
+    hide(questionSetDiv);
+    show(gameOverDiv);
     let showScore = document.querySelector("#score");
-    // timer.style.display = "none";
-    questionSetDiv.style.display = "none";
-    gameOverDiv.style.display = "block";
     showScore.textContent = "Your final score is " + score + ".";
-
 }
-        
-        
 
 //Function to save user's initials and score in local storage
 submitScoreBtn.addEventListener('click', function() {
@@ -166,12 +125,20 @@ submitScoreBtn.addEventListener('click', function() {
     let allScores = JSON.parse(localStorage.getItem("scores")) || [];
     let initials = document.querySelector("#initials").value;
 
+    //If user tries to submit without adding their initials, shows alert, does not save score without initials
     if (initials === "") {
         alert("Please enter your initials")
     }
+    //If initals are provided, code can continue
     else {
+        //Hides unnecessary sections and shows high score page
+        hide(evaluate);
+        hide(gameOverDiv);
+        show(highScoresPage);
+        //Pushes initials and scores in arrays
         allUsers.push(initials);
         allScores.push(score);
+        //Saves pushed initials and scores in local storage
         localStorage.setItem("users", JSON.stringify(allUsers));
         localStorage.setItem("scores", JSON.stringify(allScores));
 
@@ -180,26 +147,20 @@ submitScoreBtn.addEventListener('click', function() {
             let savedScores = document.createElement("p");
             savedScores.textContent = (i +1) + " Player " + allUsers[i] + " - " + allScores[i] + " point(s)";
             highScoresDiv.appendChild(savedScores)
-        }
+        }   
+    }
+});
 
-            hide(evaluate);
-            hide(gameOverDiv);
-            show(highScoresPage)
-           
-            
-        }
-        
-    });
-
-//Function to go back to main page; it resets all variables to initial values
+//Function to go back to main page
 function goToMain() {
-    reset()
-    introDiv.style.display = "block";
-    highScoresPage.style.display = "none";
+    reset();
+    show(introDiv);
+    hide(highScoresPage);
+    //Clears previous entered initial from initial's text box
     initials.value = "";
 };
 
-//Function to clear high scores
+//Function to clear high scores from high scores page and local storage
 function clearHs() {
     removeChild()
     localStorage.clear();
@@ -210,6 +171,7 @@ function reset() {
     score = 0;
     currentQuestion = 0;
     secondsLeft = 10;
+    //Removes child elements created on high scores page to avoid duplicates
     removeChild()
 };
 
