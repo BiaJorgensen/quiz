@@ -38,6 +38,11 @@ button, .option, #highScores p {
 button:hover, .option:hover {
     background-color: var(--hover-color);
     border-color: var(--hover-color);
+    cursor: pointer;
+}
+
+#highScoreLink:hover {
+    cursor: pointer;
 }
 
 .option {

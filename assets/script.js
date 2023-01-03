@@ -164,7 +164,7 @@ function renderHighScores() {
      //Creates p elements for each user/score
      for (let i = 0; i < allUsers.length; i++) {
          let savedScores = document.createElement("p");
-         savedScores.textContent = (i +1) + " " + allUsers[i] + " - " + allScores[i] + " point(s)";
+         savedScores.textContent = (i +1) + ". " + allUsers[i] + " - " + allScores[i] + " point(s)";
          highScoresDiv.appendChild(savedScores)
      }  
 }
