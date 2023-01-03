@@ -28,20 +28,44 @@ let questions = [
         answer: "D"
     },
     {
-        title: "3How do you name a variable?",
-        optionA: "3let variable = name", 
-        optionB: "3variableName = name", 
-        optionC: "3name = Variable", 
-        optionD: "3var: name",
-        answer: "C"  
+        title: "Where can you add <script> tag to in HTML to link it to JavaScript files?",
+        optionA: "Between <head> tags or before </body> closing tag", 
+        optionB: "Only between <head> tags", 
+        optionC: "Only before </body> closing tag", 
+        optionD: "Anywhere",
+        answer: "A"  
+    },
+    {
+        title: "What symbol is used to compare if two values are equal, independent of their type",
+        optionA: "=", 
+        optionB: "==", 
+        optionC: "===", 
+        optionD: "?=",
+        answer: "B"
+    },
+    {
+        title: "Which is not a correct way to assign value to a variable?",
+        optionA: "let variable = name", 
+        optionB: "const x = name", 
+        optionC: "var x = 10", 
+        optionD: "var: name",
+        answer: "D"
+    },
+    {
+        title: "Where can you add <script> tag to in HTML to link it to JavaScript files?",
+        optionA: "Between <head> tags or before </body> closing tag", 
+        optionB: "Only between <head> tags", 
+        optionC: "Only before </body> closing tag", 
+        optionD: "Anywhere",
+        answer: "A"  
     }
-    ];
+];
     
 //Variable to determine index of last available question
 let lastQuestion = questions.length -1;   
 //Variable to determine which question is currently showing -- index
 let currentQuestion = 0;
-let secondsLeft = 10;
+let secondsLeft = 60;
 let score = 0;
 let interval;
 
@@ -211,7 +235,7 @@ function clearHs() {
 function reset() {
     score = 0;
     currentQuestion = 0;
-    secondsLeft = 10;
+    secondsLeft = 60;
     //Removes child elements created on high scores page to avoid duplicates
     removeChild()
 }
