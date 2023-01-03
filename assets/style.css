@@ -47,7 +47,7 @@ button:hover, .option:hover {
 
 .option {
     max-width: 300px;
-    padding-left: 2%;
+    padding: 2%;
 }
 
 #highScores p {

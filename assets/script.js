@@ -12,20 +12,20 @@ let hsLink = document.querySelector("#highScoreLink");
 //Global variable containing array with questions and their respective options
 let questions = [
     {
-        title: "1How do you name a variable?",
-        optionA: "1let variable = name", 
-        optionB: "1variableName = name", 
-        optionC: "1name = Variable", 
-        optionD: "1var: name",
-        answer: "A"
+        title: "What symbol is used to compare if two values are equal, independent of their type",
+        optionA: "=", 
+        optionB: "==", 
+        optionC: "===", 
+        optionD: "?=",
+        answer: "B"
     },
     {
-        title: "2How do you name a variable?",
-        optionA: "2let variable = name", 
-        optionB: "2variableName = name", 
-        optionC: "2name = Variable", 
-        optionD: "2var: name",
-        answer: "B"
+        title: "Which is not a correct way to assign value to a variable?",
+        optionA: "let variable = name", 
+        optionB: "const x = name", 
+        optionC: "var x = 10", 
+        optionD: "var: name",
+        answer: "D"
     },
     {
         title: "3How do you name a variable?",
