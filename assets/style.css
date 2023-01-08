@@ -1,15 +1,14 @@
+/* Variables for colors that are being reused; easier to change all at once if needed */
 :root {
     --main-color: blueviolet;
     --hover-color: rgb(224, 11, 189);
 }
-
+/* Style for entire HTML page */
 * {
     box-sizing: border-box;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 20px;
 }
-
-
 
 h1 {
     text-align: center;
@@ -17,17 +16,20 @@ h1 {
     font-weight: bolder;
     color: var(--main-color);
 }
-
+/* Style for View High Scores and Timer */
 .hs {
     color: var(--main-color);
     display: flex;
+    /* Makes View High Scores and Timer stay one in each side of the page (far left and far right), with same space in between*/
     justify-content: space-between;
 }
-
+/* Sets elements to show on page by default */
 #intro, #highScoreLink {
     display: block;
 }
+
 .divs {
+    /* Sets elements to not show on page by default */
     display: none;
     margin: auto;
     max-width: 600px;
@@ -37,22 +39,21 @@ button, .option, #highScores p {
     background-color: var(--main-color);
     color: white;
     border-radius: 10px;
-    border-color: var(--main-color);
-    
+    border-color: var(--main-color);  
 }
-
+/* Style for elements when user hover over them */
 button:hover, .option:hover {
     background-color: var(--hover-color);
     border-color: var(--hover-color);
+    /* Changes cursor to pointer as an idication that element is clickable */
     cursor: pointer;
 }
-
+/* Changes cursor to pointer as an idication that element is clickable when hovered*/
 #highScoreLink:hover {
     cursor: pointer;
 }
-
+/* Giving some space between text and element's border */
 .option {
-    
     padding: 2%;
 }
 
@@ -62,7 +63,7 @@ button:hover, .option:hover {
     border-radius: 10px;
     padding: 5px; 
 }
-
+/* Shows element in center of page */
 #intro {
     text-align: center;
 }
@@ -77,10 +78,11 @@ h3 {
     font-style: italic;
     color: gray;
     border-top: gray solid 1px;
+    /* Gives space between this element and bottom of previous element */
     margin-top: 30px;
 }
 
-
+/* Makes page responsive when screen size is lower than 500 pixels */
 @media screen and (max-width: 500px) {
     .hs {
         display: block;
