@@ -228,7 +228,7 @@ function goToMain() {
 //Function to clear high scores from high scores page and local storage when 'Clear High Scores' button is clicked
 function clearHs() {
     removeChild()
-    localStorage.clear();
+    localStorage.removeItem("scores");
 }
     
 //Function to reset variables for a new game
