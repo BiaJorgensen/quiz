@@ -212,15 +212,7 @@ hsLink.addEventListener('click', function() {
     hide(evaluate);
     hide(timer);
     stopTimer();
-    //Gets users and scored from local storage, if any
-    let allUsers = JSON.parse(localStorage.getItem("users")) || [];
-    let allScores = JSON.parse(localStorage.getItem("scores")) || [];
-//Creates p elements for each user/score
-    for (let i = 0; i < allUsers.length; i++) {
-        let savedScores = document.createElement("p");
-        savedScores.textContent = (i +1) + " " + allUsers[i] + " - " + allScores[i] + " point(s)";
-        highScoresDiv.appendChild(savedScores)
-    }  
+    renderHighScores();
 })
 
 //Function to go back to main page when 'Main Page' button is clicked
