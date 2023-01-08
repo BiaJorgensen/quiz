@@ -214,16 +214,16 @@ hsLink.addEventListener('click', function() {
     stopTimer();
     renderHighScores();
 })
-
+let goToMainBtn = document.querySelector('#main')
 //Function to go back to main page when 'Main Page' button is clicked
-function goToMain() {
+goToMainBtn.addEventListener('click', function() {
     reset();
     show(introDiv);
     show(hsLink);
     hide(highScoresPage);
     //Clears previous entered initial from initial's text box
     initials.value = "";
-}
+}) 
 
 //Function to clear high scores from high scores page and local storage when 'Clear High Scores' button is clicked
 function clearHs() {
