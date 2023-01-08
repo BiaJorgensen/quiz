@@ -9,6 +9,9 @@ let highScoresDiv = document.querySelector("#highScores");
 let highScoresPage = document.querySelector("#highScoresPage");
 let hsLink = document.querySelector("#highScoreLink");
 const startQuizBtn = document.querySelector('#start');
+let goToMainBtn = document.querySelector('#main');
+let clearHsBtn = document.querySelector('#clear');
+
 
 //Global variable containing array with questions and their respective options
 let questions = [
@@ -214,9 +217,9 @@ hsLink.addEventListener('click', function() {
     stopTimer();
     renderHighScores();
 })
-let goToMainBtn = document.querySelector('#main')
+
 //Function to go back to main page when 'Main Page' button is clicked
-goToMainBtn.addEventListener('click', function() {
+goToMainBtn.addEventListener('click', function() { 
     reset();
     show(introDiv);
     show(hsLink);
@@ -226,10 +229,11 @@ goToMainBtn.addEventListener('click', function() {
 }) 
 
 //Function to clear high scores from high scores page and local storage when 'Clear High Scores' button is clicked
-function clearHs() {
+clearHsBtn.addEventListener('click', function() {
     removeChild()
     localStorage.removeItem("scores");
-}
+})
+
     
 //Function to reset variables for a new game
 function reset() {
