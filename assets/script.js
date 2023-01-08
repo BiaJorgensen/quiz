@@ -8,6 +8,7 @@ let submitScoreBtn = document.querySelector("#submitScore");
 let highScoresDiv = document.querySelector("#highScores");
 let highScoresPage = document.querySelector("#highScoresPage");
 let hsLink = document.querySelector("#highScoreLink");
+const startQuizBtn = document.querySelector('#start');
 
 //Global variable containing array with questions and their respective options
 let questions = [
@@ -80,13 +81,13 @@ function show(z) {
 }
 
 //Function to start quiz when "Start Quiz" button is clicked
-function startQuiz() {
+startQuizBtn.addEventListener ('click', function() {
     hide(introDiv);
     show(questionSetDiv);
     getQuestionSet();
     countdown();
     timer.textContent = "Time " + secondsLeft + " second(s)";    
-}
+})
 
 //Function to set/start timer - countdown
 function countdown() {
