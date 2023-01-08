@@ -9,6 +9,8 @@
     font-size: 20px;
 }
 
+
+
 h1 {
     text-align: center;
     font-size: 30px;
@@ -22,7 +24,11 @@ h1 {
     justify-content: space-between;
 }
 
+#intro, #highScoreLink {
+    display: block;
+}
 .divs {
+    display: none;
     margin: auto;
     max-width: 600px;
 }
