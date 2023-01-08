@@ -170,42 +170,39 @@ submitScoreBtn.addEventListener('click', function() {
         hide(evaluate);
         hide(gameOverDiv);
         show(highScoresPage);
+        //Variable to house initials and scores as objects
         let newPlayer = {
             user: initials,
             score
-        }
-        
+        };
+
+        //Gets scores array from local storage
         let allScores = JSON.parse(localStorage.getItem("scores")) || [];
-     //Pushes initials and scores in arrays
-     
-     allScores.push(newPlayer);
-     //Saves pushed initials and scores in local storage
-     
-     localStorage.setItem("scores", JSON.stringify(allScores));
+        //Pushes newPlayer's onjects in an array
+        allScores.push(newPlayer);
+        //Saves pushed initials and scores into local storage
+        localStorage.setItem("scores", JSON.stringify(allScores));
         renderHighScores();
     }
 })
 
 //Function to render high scores
 function renderHighScores() {
-    
+    //Gets scores array from local storage
     let allScores = JSON.parse(localStorage.getItem("scores")) || [];
     //Sorts players from higher to lower score
     allScores.sort((a,b)=>b.score-a.score);
-     
-    
-
      //Creates p elements for each user/score
      for (let i = 0; i < allScores.length; i++) {
          let savedScores = document.createElement("p");
          savedScores.textContent = (i +1) + ". " + allScores[i].user + " - " + allScores[i].score + " point(s)";
          highScoresDiv.appendChild(savedScores)
-     }  
+     };  
 }
 
 //Function to show high scores when high score on top left of page is clicked
 hsLink.addEventListener('click', function() {
-    //Hiding every page that user could be on, timer and high score link; only shows high scores page
+    //Hiding every page that user could be on, timer and high score link; only shows high scores page and renders scores
     show(highScoresPage);
     hide(introDiv);
     hide(hsLink);
