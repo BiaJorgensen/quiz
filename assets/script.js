@@ -170,6 +170,14 @@ submitScoreBtn.addEventListener('click', function() {
         hide(evaluate);
         hide(gameOverDiv);
         show(highScoresPage);
+        let allUsers = JSON.parse(localStorage.getItem("users")) || [];
+    let allScores = JSON.parse(localStorage.getItem("scores")) || [];
+     //Pushes initials and scores in arrays
+     allUsers.push(initials.value);
+     allScores.push(score);
+     //Saves pushed initials and scores in local storage
+     localStorage.setItem("users", JSON.stringify(allUsers));
+     localStorage.setItem("scores", JSON.stringify(allScores));
         renderHighScores();
     }
 })
@@ -178,12 +186,8 @@ submitScoreBtn.addEventListener('click', function() {
 function renderHighScores() {
     let allUsers = JSON.parse(localStorage.getItem("users")) || [];
     let allScores = JSON.parse(localStorage.getItem("scores")) || [];
-     //Pushes initials and scores in arrays
-     allUsers.push(initials.value);
-     allScores.push(score);
-     //Saves pushed initials and scores in local storage
-     localStorage.setItem("users", JSON.stringify(allUsers));
-     localStorage.setItem("scores", JSON.stringify(allScores));
+     
+    
 
      //Creates p elements for each user/score
      for (let i = 0; i < allUsers.length; i++) {
