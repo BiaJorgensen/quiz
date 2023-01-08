@@ -4,39 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
+    <!-- Tab name -->
+    <title>JS Quiz</title>
+    <!-- Link to CSS file -->
     <link rel="stylesheet" href="./assets/style.css">
 </head>
+
+
 <body>
+    <!-- Page header -->
     <header>
         <h1>JavaScript Quiz</h1>
     </header>
-
+<!-- This section contains a clickable h2 that will direct user to High Scores page and a timer for when the quiz is being taken -->
     <section class="hs">
         <h2 id="highScoreLink">View High Scores</h2>
         <h2 id="timer"></h2>
     </section>
-
-    
-
+<!-- This sections is the first page the users sees; it has a intro to the quiz and button to start quiz -->
     <section class="divs" id="intro">
         <h3>Coding Quiz Challenge</h3>
         <p>This challenge is to test your knowledge in JavaScript. You will have 120 seconds to answer up to 15 questions. You can click on "High Scores" to check other players' scores. Click "Start Quiz" to begin.</p>
         <button id="start">Start Quiz</button>
     </section>
-
-
-    <div class="divs" id="questionSet">
+<!-- This section populates the quiz questions one at a time with their respective choices(answers) -->
+    <section class="divs" id="questionSet">
+        <!-- Question and choices change after an answer is clicked using JS-->
         <h3 id="question"></h3>
-        
-            <p class="option" id="A" onclick="validateAnswer('A')"></p>
-            <p class="option" id="B" onclick="validateAnswer('B')"></p>
-            <p class="option" id="C" onclick="validateAnswer('C')"></p>
-            <p class="option" id="D" onclick="validateAnswer('D')"></p>
-        
-    </div>
-    
-
+        <p class="option" id="A" onclick="validateAnswer('A')"></p>
+        <p class="option" id="B" onclick="validateAnswer('B')"></p>
+        <p class="option" id="C" onclick="validateAnswer('C')"></p>
+        <p class="option" id="D" onclick="validateAnswer('D')"></p>
+    </section>
+<!-- This section shows when the quiz is over; allows user to submit their initials and score -->
     <section class="divs" id="gameOver">
         <h3>Game Over!</h3>
         <p id="score"></p>
@@ -44,18 +44,16 @@
         <input type="text" name="initials" id="initials">
         <button id="submitScore">Submit</button>
     </section>
-
+<!-- This div is only to show if the answer is correct or wrong -->
     <div class="divs" id="evaluate"></div>
-
+<!-- This section populates the previous players' initials and respective score using JS; it also has buttons to go back to main page(intro) and/or clear the scores -->
     <section class="divs" id="highScoresPage">
         <h3>High Scores</h3>
         <div id="highScores"></div>
-        
         <button id="main">Main Page</button>
         <button id="clear">Clear High Scores</button>
-        
     </section>
-
+<!-- Link to JavaScript file -->
     <script src="./assets/script.js"></script>
 </body>
 </html>
