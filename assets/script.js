@@ -170,13 +170,17 @@ submitScoreBtn.addEventListener('click', function() {
         hide(evaluate);
         hide(gameOverDiv);
         show(highScoresPage);
-        let allUsers = JSON.parse(localStorage.getItem("users")) || [];
-    let allScores = JSON.parse(localStorage.getItem("scores")) || [];
+        let newPlayer = {
+            user: initials,
+            score
+        }
+        
+        let allScores = JSON.parse(localStorage.getItem("scores")) || [];
      //Pushes initials and scores in arrays
-     allUsers.push(initials.value);
-     allScores.push(score);
+     
+     allScores.push(newPlayer);
      //Saves pushed initials and scores in local storage
-     localStorage.setItem("users", JSON.stringify(allUsers));
+     
      localStorage.setItem("scores", JSON.stringify(allScores));
         renderHighScores();
     }
@@ -184,7 +188,7 @@ submitScoreBtn.addEventListener('click', function() {
 
 //Function to render high scores
 function renderHighScores() {
-    let allUsers = JSON.parse(localStorage.getItem("users")) || [];
+    
     let allScores = JSON.parse(localStorage.getItem("scores")) || [];
      
     
@@ -192,7 +196,7 @@ function renderHighScores() {
      //Creates p elements for each user/score
      for (let i = 0; i < allUsers.length; i++) {
          let savedScores = document.createElement("p");
-         savedScores.textContent = (i +1) + ". " + allUsers[i] + " - " + allScores[i] + " point(s)";
+         savedScores.textContent = (i +1) + ". " + allScores[i].user + " - " + allScores[i].score + " point(s)";
          highScoresDiv.appendChild(savedScores)
      }  
 }
