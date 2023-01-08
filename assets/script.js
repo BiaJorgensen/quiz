@@ -190,11 +190,13 @@ submitScoreBtn.addEventListener('click', function() {
 function renderHighScores() {
     
     let allScores = JSON.parse(localStorage.getItem("scores")) || [];
+    //Sorts players from higher to lower score
+    allScores.sort((a,b)=>b.score-a.score);
      
     
 
      //Creates p elements for each user/score
-     for (let i = 0; i < allUsers.length; i++) {
+     for (let i = 0; i < allScores.length; i++) {
          let savedScores = document.createElement("p");
          savedScores.textContent = (i +1) + ". " + allScores[i].user + " - " + allScores[i].score + " point(s)";
          highScoresDiv.appendChild(savedScores)
