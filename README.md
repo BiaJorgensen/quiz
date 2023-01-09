@@ -36,5 +36,16 @@ Please refer to the LICENSE in the repo.
 
 ## Website preview
 
+* Main Page
+![JS_Quiz_Main_Page](./assets/Images/MainPage.PNG)
+
+* Quiz Page
+![Quiz_Page](./assets/Images/QuizPage.PNG)
+
+* Game Over Page
+![Game_Over_Page](./assets/Images/GameOverPage.PNG)
+
+* High Scores Page
+![High_Scores_Page](./assets/Images/HighScoresPage.PNG)
 
 
