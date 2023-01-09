@@ -16,7 +16,7 @@ const clearHsBtn = document.querySelector('#clear');
 //Global variable containing array with questions and their respective options
 const questions = [
     {
-        title: "What symbol is used to compare if two values are equal, independent of their type",
+        title: "What symbol is used to compare if two values are equal, independent of their type?",
         optionA: "=", 
         optionB: "==", 
         optionC: "===", 
@@ -40,7 +40,7 @@ const questions = [
         answer: "A"  
     },
     {
-        title: "JavaScript is a (an) ______ language.",
+        title: "JavaScript is a (an) __________ language.",
         optionA: "Procedural", 
         optionB: "Machine", 
         optionC: "Object-oriented", 
@@ -81,7 +81,7 @@ startQuizBtn.addEventListener ('click', function() {
     show(questionSetDiv);
     getQuestionSet();
     countdown();
-    timer.textContent = "Time " + secondsLeft + " second(s)";    
+    timer.textContent = "Timer: " + secondsLeft + " second(s)";    
 })
 
 //Function to set/start timer - countdown
@@ -89,7 +89,7 @@ function countdown() {
     show(timer);
     interval = setInterval(function() {
         secondsLeft--;
-        timer.textContent = "Time " + secondsLeft + " second(s)";
+        timer.textContent = "Timer: " + secondsLeft + " second(s)";
         if(secondsLeft <= 0) {
             stopTimer();  
             finalizeQuiz()
