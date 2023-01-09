@@ -31,21 +31,21 @@ N/A
 Please refer to the LICENSE in the repo.
 
 ## Link to live website
-
+https://biajorgensen.github.io/quiz/
 
 
 ## Website preview
 
-* Main Page
-![JS_Quiz_Main_Page](./assets/Images/MainPage.PNG)
+### Main Page
+<kbd>![JS_Quiz_Main_Page](./assets/Images/MainPage.PNG)</kbd>
 
-* Quiz Page
-![Quiz_Page](./assets/Images/QuizPage.PNG)
+### Quiz Page
+<kbd>![Quiz_Page](./assets/Images/QuizPage.PNG)</kbd>
 
-* Game Over Page
-![Game_Over_Page](./assets/Images/GameOverPage.PNG)
+### Game Over Page
+<kbd>![Game_Over_Page](./assets/Images/GameOverPage.PNG)</kbd>
 
-* High Scores Page
-![High_Scores_Page](./assets/Images/HighScoresPage.PNG)
+### High Scores Page
+<kbd>![High_Scores_Page](./assets/Images/HighScoresPage.PNG)</kbd>
 
 
