@@ -32,7 +32,7 @@ const questions = [
         answer: "D"
     },
     {
-        title: "Where can you add <script> tag in HTML to link it to JavaScript files?",
+        title: "Where can you add <script> tags in HTML to link it to JavaScript files?",
         optionA: "Between <head> tags or before </body> closing tag", 
         optionB: "Only between <head> tags", 
         optionC: "Only before </body> closing tag", 
@@ -43,7 +43,7 @@ const questions = [
         title: "JavaScript is a (an) __________ language.",
         optionA: "Procedural", 
         optionB: "Machine", 
-        optionC: "Object-oriented", 
+        optionC: "Scripting", 
         optionD: "None of the above",
         answer: "C"
     },
