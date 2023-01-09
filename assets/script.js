@@ -32,7 +32,7 @@ const questions = [
         answer: "D"
     },
     {
-        title: "Where can you add <script> tag to in HTML to link it to JavaScript files?",
+        title: "Where can you add <script> tag in HTML to link it to JavaScript files?",
         optionA: "Between <head> tags or before </body> closing tag", 
         optionB: "Only between <head> tags", 
         optionC: "Only before </body> closing tag", 
@@ -40,28 +40,20 @@ const questions = [
         answer: "A"  
     },
     {
-        title: "What symbol is used to compare if two values are equal, independent of their type",
-        optionA: "=", 
-        optionB: "==", 
-        optionC: "===", 
-        optionD: "?=",
-        answer: "B"
+        title: "JavaScript is a (an) ______ language.",
+        optionA: "Procedural", 
+        optionB: "Machine", 
+        optionC: "Object-oriented", 
+        optionD: "None of the above",
+        answer: "C"
     },
     {
-        title: "Which is not a correct way to assign value to a variable?",
-        optionA: "let variable = name", 
-        optionB: "const x = name", 
-        optionC: "var x = 10", 
-        optionD: "var: name",
-        answer: "D"
-    },
-    {
-        title: "Where can you add <script> tag to in HTML to link it to JavaScript files?",
-        optionA: "Between <head> tags or before </body> closing tag", 
-        optionB: "Only between <head> tags", 
-        optionC: "Only before </body> closing tag", 
-        optionD: "Anywhere",
-        answer: "A"  
+        title: "What does the querySelector method do?",
+        optionA: "Selects JavaScript variables", 
+        optionB: "Starts functions", 
+        optionC: "Access HTML elements", 
+        optionD: "Highlights code",
+        answer: "C"
     }
 ];
     
