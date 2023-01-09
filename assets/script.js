@@ -1,20 +1,20 @@
 //Global variables used to access HTML
-let evaluate = document.querySelector("#evaluate");
-let introDiv = document.querySelector("#intro");
-let questionSetDiv = document.querySelector("#questionSet");
-let timer = document.querySelector("#timer");
-let gameOverDiv = document.querySelector("#gameOver");
-let submitScoreBtn = document.querySelector("#submitScore");
-let highScoresDiv = document.querySelector("#highScores");
-let highScoresPage = document.querySelector("#highScoresPage");
-let hsLink = document.querySelector("#highScoreLink");
+const evaluate = document.querySelector("#evaluate");
+const introDiv = document.querySelector("#intro");
+const questionSetDiv = document.querySelector("#questionSet");
+const timer = document.querySelector("#timer");
+const gameOverDiv = document.querySelector("#gameOver");
+const submitScoreBtn = document.querySelector("#submitScore");
+const highScoresDiv = document.querySelector("#highScores");
+const highScoresPage = document.querySelector("#highScoresPage");
+const hsLink = document.querySelector("#highScoreLink");
 const startQuizBtn = document.querySelector('#start');
-let goToMainBtn = document.querySelector('#main');
-let clearHsBtn = document.querySelector('#clear');
+const goToMainBtn = document.querySelector('#main');
+const clearHsBtn = document.querySelector('#clear');
 
 
 //Global variable containing array with questions and their respective options
-let questions = [
+const questions = [
     {
         title: "What symbol is used to compare if two values are equal, independent of their type",
         optionA: "=", 
@@ -66,7 +66,7 @@ let questions = [
 ];
     
 //Variable to determine index of last available question
-let lastQuestion = questions.length -1;   
+const lastQuestion = questions.length -1;   
 //Variable to determine which question is currently showing -- index
 let currentQuestion = 0;
 let secondsLeft = 60;
@@ -113,11 +113,11 @@ function stopTimer() {
 
 //Function to get the question from questions array
 function getQuestionSet() {
-    let questionTitle = document.querySelector("#question");
-    let optionA = document.querySelector("#A");
-    let optionB = document.querySelector("#B");
-    let optionC = document.querySelector("#C");
-    let optionD = document.querySelector("#D");
+    const questionTitle = document.querySelector("#question");
+    const optionA = document.querySelector("#A");
+    const optionB = document.querySelector("#B");
+    const optionC = document.querySelector("#C");
+    const optionD = document.querySelector("#D");
     
     questionTitle.textContent = questions[currentQuestion].title;
     optionA.textContent = questions[currentQuestion].optionA;
@@ -156,7 +156,7 @@ function finalizeQuiz() {
     hide(timer);
     hide(questionSetDiv);
     show(gameOverDiv);
-    let showScore = document.querySelector("#score");
+    const showScore = document.querySelector("#score");
     showScore.textContent = "Your final score is " + score + ".";
 }
 
@@ -175,13 +175,13 @@ submitScoreBtn.addEventListener('click', function() {
         hide(gameOverDiv);
         show(highScoresPage);
         //Variable to house initials and scores as objects
-        let newPlayer = {
+        const newPlayer = {
             user: initials,
             score
         };
 
         //Gets scores array from local storage
-        let allScores = JSON.parse(localStorage.getItem("scores")) || [];
+        const allScores = JSON.parse(localStorage.getItem("scores")) || [];
         //Pushes newPlayer's onjects in an array
         allScores.push(newPlayer);
         //Saves pushed initials and scores into local storage
@@ -193,12 +193,12 @@ submitScoreBtn.addEventListener('click', function() {
 //Function to render high scores
 function renderHighScores() {
     //Gets scores array from local storage
-    let allScores = JSON.parse(localStorage.getItem("scores")) || [];
+    const allScores = JSON.parse(localStorage.getItem("scores")) || [];
     //Sorts players from higher to lower score
     allScores.sort((a,b)=>b.score-a.score);
      //Creates p elements for each user/score
      for (let i = 0; i < allScores.length; i++) {
-         let savedScores = document.createElement("p");
+         const savedScores = document.createElement("p");
          savedScores.textContent = (i +1) + ". " + allScores[i].user + " - " + allScores[i].score + " point(s)";
          highScoresDiv.appendChild(savedScores)
      };  
